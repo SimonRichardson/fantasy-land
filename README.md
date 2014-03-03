@@ -173,10 +173,15 @@ implement:
 ### Comonad
 
 A value which satisfies the Comonad specification must provide a 
-`extract` and a `extend` method. The `extract` method takes no 
-arguments, but returns a value.
+`extract` and a `extend` method. 
+
+#### `extract` method
+
+The `extract` method takes no arguments, but returns a value.
 
     m.extract()
+
+#### `extend` method
 
 The `extend` method takes one argument:
 
