@@ -170,9 +170,31 @@ implement:
 1. `m.of(a).chain(f)` is equivalent to `f(a)` (left identity)
 2. `m.chain(m.of)` is equivalent to `m` (right identity)
 
+### Comonad
 
+A value which satisfies the Comonad specification must provide a 
+`extract` and a `extend` method. The `extract` method takes no 
+arguments, but returns a value.
 
+    m.extract()
 
+The `extend` method takes one argument:
+
+    m.extend(f)
+
+1. `f` must be a function which returns a value
+
+    1. If `f` is not a function, the behaviour of `extend` is
+       unspecified.
+
+2. `extend` must return a value of the same Comonad
+
+A value that implements the Comonad specification must also implement
+the Monad specifications.
+
+1. `c.extend(c.extract)` is equivalent to `c.of(a)`
+2. `c.extend(f).extract()` is equivalent to `f`
+3. `c.extend(g).extend(f)` is equivalent to `c.extend(f).extend(g)`
 
 
 ## Notes

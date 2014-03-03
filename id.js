@@ -32,4 +32,13 @@ Id.of = function(a) {
     return new Id(a);
 };
 
+// Comonad
+Id.prototype.extract = function() {
+    return this.value;
+};
+
+Id.prototype.extend = function(f) {
+    return Id(f(Id.of(this.value)));
+};
+
 if(typeof module == 'object') module.exports = Id;
